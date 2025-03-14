@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clock</title>
+    <style>
+      body {
+        background: rgb(64, 81, 209);
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #clock {
+        font-size: 2rem;
+        background: #fff;
+        padding: 50px;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2 id="clock"></h2>
+    </div>
+    <script>
+      function clock() {
+        let date = new Date();
+        let hours = date.getHours();
+        let ampm = hours >= 12 ? "pm" : "Am";
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        let minute = date.getMinutes().toString().padStart(2, "0");
+        let sec = date.getSeconds().toString().padStart(2, "0");
+
+        let clocks = document.getElementById("clock");
+        clocks.innerHTML = `${hours}:${minute}:${sec} ${ampm}`;
+      }
+      setInterval(clock, 1000);
+      clock();
+    </script>
+  </body>
+</html>
